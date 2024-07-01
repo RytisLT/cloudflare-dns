@@ -13,5 +13,7 @@ RUN echo "* * * * * root /root/dns.sh > /proc/1/fd/1" >> /etc/crontab
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
+LABEL org.opencontainers.image.licenses=MIT
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["tini", "/usr/sbin/cron", "--", "-f"]
